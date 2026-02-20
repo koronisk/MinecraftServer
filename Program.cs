@@ -1,14 +1,15 @@
+using MinecraftServer.Middleware;
+using MinecraftServer.Routes;
+using MinecraftServer.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenApi();
+builder.Services.AddSingleton<PlayerService>();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+app.MapPlayerRoutes();
 
-app.UseHttpsRedirection();
+app.UseAccessKeyAuth();
 
 app.Run();
