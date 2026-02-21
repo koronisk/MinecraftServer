@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Configuration;
 
-namespace MinecraftServer.Middleware;
+namespace MinecraftServer;
 
 public class AuthMiddleware
 {

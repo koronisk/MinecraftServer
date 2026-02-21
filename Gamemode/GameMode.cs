@@ -1,34 +1,34 @@
+using System.Text.Json.Serialization;
+
 namespace MinecraftServer;
 
 public class GameMode
 {
-    private readonly Dictionary<int, Lobby> _lobbies;
+    public required string Id { get; init; }
+    public required string Name { get; init; }
 
-    public GameMode()
-    {
-        _lobbies = [];
-    }
+    public HashSet<Group> Groups { get; init; } = [];
 
-    public string Id { get; }
+    [JsonIgnore] public Dictionary<int, Lobby> Lobbies { get; set; } = new();
 
     public Lobby CreateLobby()
     {
         var id = GetNextFreeId();
         var lobby = new Lobby(this, Guid.NewGuid().ToString(), id);
-        
-        _lobbies[id] = lobby;
-        
+
+        Lobbies[id] = lobby;
+
         return lobby;
     }
 
     private int GetNextFreeId()
     {
-        if (_lobbies.Count == 0)
+        if (Lobbies.Count == 0)
             return 0;
 
         var id = 0;
 
-        while (_lobbies.ContainsKey(id))
+        while (Lobbies.ContainsKey(id))
         {
             id++;
         }
@@ -38,6 +38,6 @@ public class GameMode
 
     public void RemoveLobby(Lobby lobby)
     {
-        _lobbies.Remove(lobby.GameModeId);
+        Lobbies.Remove(lobby.GameModeId);
     }
 }

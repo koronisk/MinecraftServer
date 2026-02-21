@@ -40,8 +40,6 @@ ScaffoldingReadMe.txt
 ~$*
 *~
 CodeCoverage/
-appsettings.Development.json
-appsettings.json
 
 # MSBuild Binary and Structured Log
 *.binlog
@@ -55,3 +53,6 @@ appsettings.json
 TestResult.xml
 nunit-*.xml
 MinecraftServer.sln.DotSettings.user
+
+.idea/
+appsettings.json

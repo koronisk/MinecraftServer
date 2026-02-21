@@ -1,4 +1,4 @@
-using MinecraftServer.Middleware;
+using MinecraftServer;
 using MinecraftServer.Routes;
 using MinecraftServer.Services;
 
